@@ -1,0 +1,31 @@
+# Image repository and tag are set by the build workflows in eks-project-app.
+# Don't edit them by hand; push app code instead.
+backend:
+  image:
+    repository: REPLACE_ME/two-tier-eks/backend
+    tag: not-built-yet
+  replicas: 1 # tasks are in-memory, so keep 1
+  port: 5000
+  resources:
+    requests:
+      cpu: 50m
+      memory: 64Mi
+    limits:
+      cpu: 250m
+      memory: 256Mi
+frontend:
+  image:
+    repository: REPLACE_ME/two-tier-eks/frontend
+    tag: not-built-yet
+  replicas: 2
+  port: 8080
+  service:
+    type: LoadBalancer
+    port: 80
+  resources:
+    requests:
+      cpu: 25m
+      memory: 32Mi
+    limits:
+      cpu: 200m
+      memory: 128Mi
