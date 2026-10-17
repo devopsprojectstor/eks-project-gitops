@@ -15,8 +15,8 @@ backend:
       memory: 256Mi
 frontend:
   image:
-    repository: REPLACE_ME/two-tier-eks/frontend
-    tag: not-built-yet
+    repository: 616893542512.dkr.ecr.ap-south-1.amazonaws.com/two-tier-eks/frontend
+    tag: f054525
   replicas: 2
   port: 8080
   service:
