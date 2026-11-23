@@ -3,7 +3,7 @@
 backend:
   image:
     repository: 616893542512.dkr.ecr.ap-south-1.amazonaws.com/two-tier-eks/backend
-    tag: 26100f0
+    tag: edd93c6
   replicas: 1 # tasks are in-memory, so keep 1
   port: 5000
   resources:
