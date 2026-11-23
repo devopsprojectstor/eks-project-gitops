@@ -1,3 +1,4 @@
+{{- $b := .Values.backend }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -6,7 +7,7 @@ metadata:
     app: backend
     {{- include "two-tier.labels" . | nindent 4 }}
 spec:
-  replicas: {{ .Values.backend.replicas }}
+  replicas: {{ $b.replicas }}
   selector:
     matchLabels:
       app: backend
@@ -19,9 +20,10 @@ spec:
         runAsNonRoot: true
       containers:
         - name: backend
-          image: "{{ .Values.backend.image.repository }}:{{ .Values.backend.image.tag }}"
+          # tag@digest when a digest is set: Kubernetes pulls by digest, the tag is just a label
+          image: "{{ $b.image.repository }}:{{ $b.image.tag }}{{ with $b.image.digest }}@{{ . }}{{ end }}"
           ports:
-            - containerPort: {{ .Values.backend.port }}
+            - containerPort: {{ $b.port }}
           env:
             - name: POD_NAME
               valueFrom:
@@ -30,17 +32,17 @@ spec:
           readinessProbe:
             httpGet:
               path: /api/health
-              port: {{ .Values.backend.port }}
+              port: {{ $b.port }}
             initialDelaySeconds: 3
             periodSeconds: 5
           livenessProbe:
             httpGet:
               path: /api/health
-              port: {{ .Values.backend.port }}
+              port: {{ $b.port }}
             initialDelaySeconds: 10
             periodSeconds: 15
           resources:
-            {{- toYaml .Values.backend.resources | nindent 12 }}
+            {{- toYaml $b.resources | nindent 12 }}
           securityContext:
             allowPrivilegeEscalation: false
 ---
@@ -56,5 +58,5 @@ spec:
   selector:
     app: backend
   ports:
-    - port: {{ .Values.backend.port }}
-      targetPort: {{ .Values.backend.port }}
+    - port: {{ $b.port }}
+      targetPort: {{ $b.port }}
