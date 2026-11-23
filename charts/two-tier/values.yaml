@@ -2,8 +2,8 @@
 # Don't edit them by hand; push app code instead.
 backend:
   image:
-    repository: REPLACE_ME/two-tier-eks/backend
-    tag: not-built-yet
+    repository: 616893542512.dkr.ecr.ap-south-1.amazonaws.com/two-tier-eks/backend
+    tag: edd93c6
   replicas: 1 # tasks are in-memory, so keep 1
   port: 5000
   resources:
@@ -15,8 +15,8 @@ backend:
       memory: 256Mi
 frontend:
   image:
-    repository: REPLACE_ME/two-tier-eks/frontend
-    tag: not-built-yet
+    repository: 616893542512.dkr.ecr.ap-south-1.amazonaws.com/two-tier-eks/frontend
+    tag: f054525
   replicas: 2
   port: 8080
   service:
