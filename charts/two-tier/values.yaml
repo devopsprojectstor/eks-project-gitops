@@ -3,8 +3,8 @@
 backend:
   image:
     repository: 616893542512.dkr.ecr.ap-south-1.amazonaws.com/two-tier-eks/frontend
-    tag: bc59258
-    digest: sha256:e92e996f8c869135364a210d56b49d230d9a9d0902b951d3bcd5e4c9207d84ce
+    tag: 11058f9-13-1
+    digest: sha256:d79c90ff4ea82d1ea0021cdc70989123c0e2f0ff271e15cbe6bce8ede9732968
   replicas: 1 # tasks are in-memory, so keep 1
   port: 5000
   resources:
