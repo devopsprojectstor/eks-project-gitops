@@ -2,9 +2,9 @@
 # Don't edit them by hand; push app code instead.
 backend:
   image:
-    repository: 616893542512.dkr.ecr.ap-south-1.amazonaws.com/two-tier-eks/backend
+    repository: 616893542512.dkr.ecr.ap-south-1.amazonaws.com/two-tier-eks/frontend
     tag: bc59258
-    digest: sha256:ab7206c131fb61419142062f71248743aa70eacf525d09241a6b2605e8d223e8
+    digest: sha256:e92e996f8c869135364a210d56b49d230d9a9d0902b951d3bcd5e4c9207d84ce
   replicas: 1 # tasks are in-memory, so keep 1
   port: 5000
   resources:
