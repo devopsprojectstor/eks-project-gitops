@@ -17,7 +17,8 @@ backend:
 frontend:
   image:
     repository: 616893542512.dkr.ecr.ap-south-1.amazonaws.com/two-tier-eks/frontend
-    tag: f054525
+    tag: ec64d73-14-1
+    digest: sha256:143054413e7032ef598fdd8024fd3350ac9ddaf6e021ed35b2bef37363ca5824
   replicas: 2
   port: 8080
   service:
